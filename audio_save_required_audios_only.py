@@ -106,8 +106,8 @@ def delete_existing_audios():
 
 delete_existing_audios()
 #user input of exam duration
-#duration=int(input('Enter the duration of exam\n'))
-duration=20
+import sys
+duration=int(sys.argv[1])
 f = open("report.txt","r+")
 f. truncate(0)
 f. close()
