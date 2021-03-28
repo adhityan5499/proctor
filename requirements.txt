@@ -1,0 +1,5 @@
+SpeechRecognition
+pyaudio
+wave
+nltk
+firebase_admin

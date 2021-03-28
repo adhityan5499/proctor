@@ -1,0 +1,45 @@
+<html>
+    <title>Exam Page</title>
+    <body>
+        
+            <h3>Hi, {{name}}!!</h3>
+            <div>Your time left is <span id="time">{{time}}</span> seconds!</div>
+            <hr>
+            <h2>Questions</h2>
+            <hr>
+            {%for i in questions%}
+            <p>
+                <h3>{{i[0]}}</h3>
+                <h5>{{i[1]}}</h5>
+                <h5>{{i[2]}}</h5>
+                <h5>{{i[3]}}</h5>
+                <h5>{{i[4]}}</h5>
+                <hr>
+            </p>
+            {%endfor%}
+            <form action="/result">
+            <button type="submit" name="submit">Submit</button>
+            </form>
+    </body>
+    <script>
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10)
+                seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes*60 + seconds;
+                if (--timer < 0) {
+                    alert('Time over, get out!');
+                    window.location.href = "/home";
+                }
+            }, 1000);
+        }
+        window.onload = function () {
+            var seconds = '{{time}}';
+            display = document.querySelector('#time');
+            startTimer(seconds, display);
+        };
+    </script>
+</html>
